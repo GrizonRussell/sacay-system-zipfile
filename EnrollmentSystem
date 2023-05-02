@@ -1,0 +1,140 @@
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Acer
+ */
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Student> students = new ArrayList<>();
+        int studentLimit = 10;
+
+                  System.out.println();
+                  System.out.println("  ----WELCOME TO IPONAN NATIONAL HIGH SCHOOL---\n");
+                  System.out.println("-----------------------------------------------------------\n");
+                  System.out.println("---Do you want to enroll in Grade 10 DogWood?---\n");
+                  System.out.println("-----------------------------------------------------------\n");
+                  System.out.println("-----If YES, input 1. - If NO, input 4 to exit-----\n");
+                  System.out.println("-----------------------------------------------------------\n");                  
+                  
+        while (students.size() < studentLimit) {
+            System.out.println("1.     Enroll Student\n");
+            System.out.println("2.      Drop student\n");
+            System.out.println("3. List of Enrolled Students\n");
+            System.out.println("4.          Exit\n");
+            System.out.println("----------------------------\n");
+
+                int choice = scanner.nextInt();    
+                switch (choice) {
+                
+                case 1:
+                    
+                    System.out.print("Enter Your Name: ");
+                        String name = scanner.next();
+                    System.out.print("Enter Middle Name: ");
+                        String middle = scanner.next();
+                    System.out.print("Enter Last Name: ");
+                        String last = scanner.next();
+                    System.out.print("Enter LRN: ");
+                        String lrn = scanner.next();
+                    System.out.print("Enter Month of Birth: ");
+                        String month = scanner.next();
+                    System.out.print("Enter Date of Birth: ");
+                        String dob  = scanner.next();
+                    System.out.print("Enter Year of Birth: ");
+                        String yearofbirth = scanner.next();
+                    System.out.print("Enter Age: ");
+                        String Age = scanner.next();
+                    System.out.print("Enter Gender: ");
+                        String Gender = scanner.next();
+                    System.out.print("Enter Contact Number: ");
+                        String Contact = scanner.next();
+                    System.out.print("Enter Gmail: ");
+                        String Gmail = scanner.next();
+                    
+                    System.out.println("\nSubject Schedule:\n----------------------------\nAralin Panlipunan 7:00AM - 8:00AM\nMAPEH 8:00AM - 8:35AM\nRecess Time 9:20 - 10:00AM\nEnglish 10:00AM - 11:00AM\nFilipino 11:00AM - 12:00AM\nLunch Break 12:00NN - 1:00PM\nScience 1:00PM - 2:00PM\nMath 2:00PM - 3:00PM\n");
+
+                        Student student = new Student(name, middle, last, lrn, month, yearofbirth, dob, Age, Gender, Contact, Gmail);
+                        students.add(student);
+
+                            break;                  
+                    
+                case 2:
+                    System.out.print("Enter student name to remove: ");
+                    String nameToDelete = scanner.next();
+
+                    boolean isRemoved = false;
+                    for (Student s : students) {
+                        if (s.getName().equals(nameToDelete)) {
+                            students.remove(s);
+                            isRemoved = true;
+                            break;
+                        }
+                    }
+
+                    if (isRemoved) {
+                        System.out.println("Student removed successfully!");
+                    } else {
+                        System.out.println("Student not found!");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("View all details:");
+                    for (Student s : students) {
+                        System.out.println(s);
+                    }
+                    break;
+
+                case 4:
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid choice! Please Choose the Corresponding Numbers: ");
+            }
+        }
+        System.out.println("Grade 10 DogWood is full. Come back again next school year 😊");
+    }
+}
+
+class Student {
+    private final String name;
+    private final String nameMiddle;
+    private final String nameLast;
+    private final String lrn;
+    private final String month;
+    private final String dob;
+    private final String yearofbirth;
+    private final String age;
+    private final String gender;
+    private final String contact;
+    private final String gmail;
+
+    public Student(String name, String nameMiddle, String nameLast, String lrn, String month,  String dob, String yearofbirth, String age, String gender, String contact, String gmail){
+        this.name = name;
+        this.nameMiddle = nameMiddle;
+        this.nameLast = nameLast;
+        this.lrn = lrn;
+        this.month = month;
+        this.dob = dob;
+        this.yearofbirth = yearofbirth;
+        this.age = age;
+        this.gender = gender;
+        this.contact = contact;
+        this.gmail = gmail;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "\n Name: " + name + "\n Middle Name: " + nameMiddle + "\n Last Name: " + nameLast + "\n Lrn: " + lrn + "\n Month of Birth: " + month +  "\n Date of Birth: " + dob + "\n Year of Birth: " + yearofbirth + "\n Age: " + age + "\n Gender: " + gender + "\n Contact: " + contact + "\n Gmail: " + gmail;
+    }
+} 
